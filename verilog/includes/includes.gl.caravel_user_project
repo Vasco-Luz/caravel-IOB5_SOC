@@ -25,20 +25,21 @@
 -v $(CARAVEL_PATH)/gl/user_id_programming.v	   
 -v $(CARAVEL_PATH)/gl/mprj_io_buffer.v	   
 -v $(CARAVEL_PATH)/gl/caravel.v 		     
--v $(CARAVEL_PATH)/gl/caravel_core.v 
+-v $(USER_PROJECT_VERILOG)/gl/caravel_core.v 
 
 ###########################################################
 ## These blocks are manually designed 		
 ###########################################################
 -v $(CARAVEL_PATH)/gl/chip_io.v 
--v $(CARAVEL_PATH)/gl/gpio_defaults_block_007.v     
--v $(CARAVEL_PATH)/gl/gpio_defaults_block_087.v     
--v $(CARAVEL_PATH)/gl/gpio_defaults_block_009.v   
+-v $(USER_PROJECT_VERILOG)/gl/gpio_defaults_block_00b.v   
+-v $(USER_PROJECT_VERILOG)/gl/gpio_defaults_block_007.v   
+-v $(USER_PROJECT_VERILOG)/gl/gpio_defaults_block_009.v   
+-v $(USER_PROJECT_VERILOG)/gl/gpio_defaults_block_087.v 
 
 # Caravel user project includes	     
 -v $(USER_PROJECT_VERILOG)/rtl/user_defines.v
 
--v $(USER_PROJECT_VERILOG)/gl/user_project_wrapper.v	     
+-v $(USER_PROJECT_VERILOG)/rtl/user_project_wrapper.v	     
 -v $(USER_PROJECT_VERILOG)/gl/user_proj_example.v     
 
 ## copy right files 

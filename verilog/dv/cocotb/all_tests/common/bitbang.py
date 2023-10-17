@@ -64,7 +64,7 @@ async def bb_reset_spi(spi_master):
 # 1	& 36
 # 0	& 37
 async def bb_configure_2_gpios_spi(configL, configR, spi_master):
-    num_bits = 13
+    num_bits = 10
     mask = 0x1 << num_bits - 1
     for i in reversed(range(num_bits)):
         left = (configL & mask) >> i
@@ -83,7 +83,7 @@ async def bb_configure_2_gpios_spi(configL, configR, spi_master):
                 await bb_clock00_spi(spi_master)
 
 
-async def bb_configure_all_gpios(config, spi_master):
+async def bb_configure_all_gpios(config, spi_master, load = True):
     await bb_reset_spi(spi_master)
     await bb_configure_2_gpios_spi(config, config, spi_master)  # 18	& 19
     await bb_configure_2_gpios_spi(config, config, spi_master)  # 17	& 20
@@ -104,4 +104,5 @@ async def bb_configure_all_gpios(config, spi_master):
     await bb_configure_2_gpios_spi(config, config, spi_master)  # 2	& 35
     await bb_configure_2_gpios_spi(config, config, spi_master)  # 1	& 36
     await bb_configure_2_gpios_spi(config, config, spi_master)  # 0	& 37
-    await bb_load_spi(spi_master)
+    if load:
+        await bb_load_spi(spi_master)

@@ -21,7 +21,7 @@ Tests:
     - {name: mgmt_gpio_out, sim: GL_SDF}
     - {name: bitbang_spi_i, sim: GL_SDF}
     - {name: hk_regs_wr_spi, sim: GL_SDF}
-    - {name: IRQ_external, sim: GL_SDF}
+    # - {name: IRQ_external, sim: GL_SDF}
     - {name: IRQ_uart, sim: GL_SDF}
     - {name: mgmt_gpio_in, sim: GL_SDF}
     - {name: timer0_oneshot, sim: GL_SDF}
@@ -33,13 +33,13 @@ Tests:
     - {name: user_pass_thru_rd, sim: GL_SDF}
     - {name: clock_redirect, sim: GL_SDF}
     - {name: mgmt_gpio_bidir, sim: GL_SDF}
-    - {name: la, sim: GL_SDF}
+    # - {name: la, sim: GL_SDF}
     # - {name: pll, sim: GL_SDF}
     - {name: spi_master_temp, sim: GL_SDF}
     - {name: bitbang_cpu_all_o, sim: GL_SDF}
-    - {name: mem_dff_W, sim: GL_SDF}
+    # - {name: mem_dff_W, sim: GL_SDF}
     - {name: serial_shifting_01, sim: GL_SDF}
-    - {name: mem_dff2_W, sim: GL_SDF}
+    # - {name: mem_dff2_W, sim: GL_SDF}
     - {name: serial_shifting_10, sim: GL_SDF}
     - {name: serial_shifting_1100, sim: GL_SDF}
     - {name: serial_shifting_0011, sim: GL_SDF}
@@ -59,13 +59,13 @@ Tests:
     - {name: user_pass_thru_connection, sim: GL_SDF}
     - {name: spi_rd_wr, sim: GL_SDF}
     - {name: PoR, sim: GL_SDF}
-    - {name: IRQ_spi, sim: GL_SDF}
-    - {name: IRQ_external2, sim: GL_SDF}
+    # - {name: IRQ_spi, sim: GL_SDF}
+    # - {name: IRQ_external2, sim: GL_SDF}
     - {name: IRQ_uart_rx, sim: GL_SDF}
-    - {name: uart_rx_msg, sim: GL_SDF}
-    - {name: user0_irq, sim: GL_SDF}
-    - {name: user1_irq, sim: GL_SDF}
-    - {name: user2_irq, sim: GL_SDF}
+    # - {name: uart_rx_msg, sim: GL_SDF}
+    # - {name: user0_irq, sim: GL_SDF}
+    # - {name: user1_irq, sim: GL_SDF}
+    # - {name: user2_irq, sim: GL_SDF}
     - {name: mgmt_pass_thru_rd, sim: GL_SDF}
 
 

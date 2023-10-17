@@ -11,7 +11,7 @@ import cocotb.log
 
 async def SPI_VIP(csb, clk, SDI, SDO, mem, remove_clk=0):
     while True:
-        await FallingEdge(csb)
+        # await FallingEdge(csb)
         cocotb.log.info("[SPI_VIP] CSB is asserted operation has begin ")
         op = await cocotb.start(SPI_op(clk, SDI, SDO, mem, remove_clk))
         await csb_watcher(csb, op)

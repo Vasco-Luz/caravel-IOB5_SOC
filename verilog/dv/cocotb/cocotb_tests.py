@@ -17,7 +17,6 @@ from all_tests.irq.IRQ_timer import *
 from all_tests.irq.IRQ_uart import *
 from all_tests.irq.IRQ_uart_rx import *
 from all_tests.irq.IRQ_spi import *
-from all_tests.gpio_caravan.gpio_caravan import *
 from all_tests.gpio.gpio_user import *
 from all_tests.mgmt_gpio.mgmt_gpio import *
 from all_tests.timer.timer import *

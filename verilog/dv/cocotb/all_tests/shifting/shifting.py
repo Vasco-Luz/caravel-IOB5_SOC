@@ -10,11 +10,11 @@ def shift(gpio, shift_type, caravelEnv):
     if shift_type:
         bits = "0101010101010"
         if bit_size != 13:
-            bits = bits[0:bit_size-1]
+            bits = bits[0:bit_size]
     else:
         bits = "1010101010101"
         if bit_size != 13:
-            bits = bits[0:bit_size-1]
+            bits = bits[0:bit_size]
     fail = False
     gpio_to_skip = ()
 
@@ -136,20 +136,17 @@ async def serial_shifting_10(dut):
             "gpio_control_bidir_2[2]",
         )
 
-    type = True  # type of shifting 01 or 10
+    type = False  # type of shifting 01 or 10
     for gpio in gpios_l:
         if 'GL' not in caravelEnv.design_macros._asdict():
             shift(uut._id(gpio, False), type, caravelEnv)
         else:
             shift((uut, gpio), type, caravelEnv)
-        type = not type
-    type = True  # type of shifting 01 or 10
     for gpio in reversed(gpios_h):
         if 'GL' not in caravelEnv.design_macros._asdict():
             shift(uut._id(gpio, False), type, caravelEnv)
         else:
             shift((uut, gpio), type, caravelEnv)
-        type = not type
 
 
 @cocotb.test()
@@ -237,20 +234,17 @@ async def serial_shifting_01(dut):
             "gpio_control_bidir_2[2]",
         )
 
-    type = False  # type of shifting 01 or 10
+    type = True  # type of shifting 01 or 10
     for gpio in gpios_l:
         if 'GL' not in caravelEnv.design_macros._asdict():
             shift(uut._id(gpio, False), type, caravelEnv)
         else:
             shift((uut, gpio), type, caravelEnv)
-        type = not type
-    type = False  # type of shifting 01 or 10
     for gpio in reversed(gpios_h):
         if 'GL' not in caravelEnv.design_macros._asdict():
             shift(uut._id(gpio, False), type, caravelEnv)
         else:
             shift((uut, gpio), type, caravelEnv)
-        type = not type
 
 
 @cocotb.test()
@@ -338,20 +332,20 @@ async def serial_shifting_0011(dut):
             "gpio_control_bidir_2[2]",
         )
 
-    type = 2  # type of shifting 01 or 10
+    type = True  # type of shifting 01 or 10
     for gpio in gpios_l:
         if 'GL' not in caravelEnv.design_macros._asdict():
             shift_2(uut._id(gpio, False), type, caravelEnv)
         else:
             shift_2((uut, gpio), type, caravelEnv)
-        type = (type + 1) % 4
-    type = 2  # type of shifting 01 or 10
+        type = not type
+    type = False  # type of shifting 01 or 10
     for gpio in reversed(gpios_h):
         if 'GL' not in caravelEnv.design_macros._asdict():
             shift_2(uut._id(gpio, False), type, caravelEnv)
         else:
             shift_2((uut, gpio), type, caravelEnv)
-        type = (type + 1) % 4
+        type = not type
 
 
 @cocotb.test()
@@ -438,40 +432,28 @@ async def serial_shifting_1100(dut):
             "gpio_control_bidir_2[1]",
             "gpio_control_bidir_2[2]",
         )
-    type = 0  # type of shifting 01 or 10
+    type = False  # type of shifting 01 or 10
     for gpio in gpios_l:
         if 'GL' not in caravelEnv.design_macros._asdict():
             shift_2(uut._id(gpio, False), type, caravelEnv)
         else:
             shift_2((uut, gpio), type, caravelEnv)
-        type = (type + 1) % 4
-    type = 0  # type of shifting 01 or 10
+        type = not type
+    type = True  # type of shifting 01 or 10
     for gpio in reversed(gpios_h):
         if 'GL' not in caravelEnv.design_macros._asdict():
             shift_2(uut._id(gpio, False), type, caravelEnv)
         else:
             shift_2((uut, gpio), type, caravelEnv)
-        type = (type + 1) % 4
+        type = not type
 
 
 def shift_2(gpio, shift_type, caravelEnv):
     bit_size = int(caravelEnv.design_macros.IO_CTRL_BITS)
-    if shift_type == 0:
-        bits = "0011001100110"
-        if bit_size != 13:
-            bits = bits[0:bit_size-1]
-    elif shift_type == 1:
-        bits = "0110011001100"
-        if bit_size != 13:
-            bits = bits[0:bit_size-1]
-    elif shift_type == 2:
-        bits = "1100110011001"
-        if bit_size != 13:
-            bits = bits[0:bit_size-1]
-    elif shift_type == 3:
-        bits = "1001100110011"
-        if bit_size != 13:
-            bits = bits[0:bit_size-1]
+    if shift_type:
+        bits = "1100110011"
+    else:
+        bits = "0011001100"
     gpio_to_skip = ()
     if "CPU_TYPE_ARM" in caravelEnv.design_macros._asdict():
         gpio_to_skip = (

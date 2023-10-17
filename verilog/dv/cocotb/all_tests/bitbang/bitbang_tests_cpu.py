@@ -56,7 +56,7 @@ async def bitbang_spi_i_configure(caravelEnv, debug_regs):
     spi_master = SPI(caravelEnv)
     await caravelEnv.disable_csb()
     await bb_configure_all_gpios(
-        GPIO_MODE.GPIO_MODE_MGMT_STD_INPUT_NOPULL.value, spi_master
+        0x007, spi_master
     )
 
     # disable Housekeeping SPI
@@ -68,5 +68,5 @@ async def bitbang_spi_i_configure(caravelEnv, debug_regs):
 async def bitbang_spi_o_configure(caravelEnv, debug_regs):
     spi_master = SPI(caravelEnv)
     await caravelEnv.disable_csb()
-    await bb_configure_all_gpios(GPIO_MODE.GPIO_MODE_MGMT_STD_OUTPUT.value, spi_master)
+    await bb_configure_all_gpios(0x00b, spi_master)
     debug_regs.write_debug_reg2_backdoor(0xDD)

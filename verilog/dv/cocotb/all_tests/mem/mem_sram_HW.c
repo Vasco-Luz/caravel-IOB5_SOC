@@ -20,7 +20,7 @@ void main()
     for (iterator = 8; iterator < dff_size; iterator++){
       // reg_debug_2 = iterator;
         if (*((unsigned short *) 0x00000000+iterator) !=  0x5555){
-            reg_debug_2 = iterator;
+            // reg_debug_2 = iterator;
             reg_debug_1 = 0x1E; 
             return;
         }
